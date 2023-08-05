@@ -177,6 +177,7 @@ def draw_harmonica(blow, draw, draw_bends, blow_bends, overdraws, overblows, ton
     harmonica_img = Image.new('RGB', (500, 500), (255, 255, 255))
     draws = ImageDraw.Draw(harmonica_img)
     draws.rectangle((14, 229, 487, 272), fill=(125, 125, 125))
+    legend = Image.open('legend.png')
 
     write_square(tonic, 0, 0, draws, font, main_color=(255, 255, 255), fill=(125, 125, 125))
     for i in range(1, 11):
@@ -199,6 +200,7 @@ def draw_harmonica(blow, draw, draw_bends, blow_bends, overdraws, overblows, ton
     for i, blow_bends_notes in enumerate(blow_bends):
         for j, blow_bends_note in enumerate(blow_bends_notes):
             write_square(blow_bends_note[0], i+1, -2-j, draws, font, main_color=(94, 144, 242), scale=scale)
+    harmonica_img.paste(legend, (0, 0), legend)
     return harmonica_img
 
 
